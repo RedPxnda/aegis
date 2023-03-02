@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "aegis",
+  "version": "${version}",
+  "name": "Aegis",
+  "description": "A simple mod about overhauling minecraft's damage system.",
+  "authors": [
+    "RedPxnda/Panderva"
+  ],
+  "contact": {
+  },
+  "license": "Insert License Here",
+  "icon": "assets/aegis/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.redpxnda.aegis.fabric.AegisFabric"
+    ],
+    "client": [
+      "com.redpxnda.aegis.fabric.client.FabricClient"
+    ]
+  },
+  "mixins": [
+    "aegis.mixins.json",
+    "aegis-common.mixins.json"
+  ],
+  "depends": {
+    "fabric": "*",
+    "minecraft": ">=1.19.2",
+    "architectury": ">=6.2.43"
+  }
+}
