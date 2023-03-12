@@ -31,9 +31,7 @@ public class ProtectionBarOverlay {
             reductionPercent/=10;
             if (reductionPercent > 0) { // if the player actually has protection
                 RenderSystem.setShaderColor(1f, 1f, 1f, 1f); // setting color
-
-                //TODO: fix this
-                GuiComponent.drawString(poseStack, Minecraft.getInstance().font, ClientShieldData.getShield() + "d" /*reductionPercent + "%"*/, x + 52, y, 16777215); // drawing reduction percent text
+                GuiComponent.drawString(poseStack, Minecraft.getInstance().font, reductionPercent + "%", x + 52, y, 16777215); // drawing reduction percent text
                 for (int i = 0; i < 6; i++) { // 6 times, twice for each protection type
                     double side = overallProt;
                     switch (i) { // i'm too lazy to think of a mathematical way to represent this, so I use a switch statement

@@ -5,6 +5,7 @@ import net.minecraft.world.phys.Vec3;
 
 public class EntityShield {
     private double shield;
+    private double blockShield;
     private int lastHurt;
 
     private double hitX;
@@ -35,6 +36,10 @@ public class EntityShield {
         this.lastHurt = 0;
     }
 
+    public void maximizeLastHurt() {
+        this.lastHurt = 100;
+    }
+
     public void increaseLastHurt() {
         this.lastHurt++;
     }
@@ -53,6 +58,14 @@ public class EntityShield {
 
     public void decrementShield(double amount) {
         this.shield-=amount;
+    }
+
+    public double getBlockShield() {
+        return blockShield;
+    }
+
+    public void setBlockShield(double amount) {
+        this.blockShield = amount;
     }
 
     public void copyFrom(EntityShield source) {

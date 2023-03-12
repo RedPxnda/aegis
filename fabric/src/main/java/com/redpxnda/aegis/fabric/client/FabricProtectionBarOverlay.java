@@ -14,7 +14,7 @@ public class FabricProtectionBarOverlay implements HudRenderCallback {
         Minecraft mc = Minecraft.getInstance();
         Window window = mc.getWindow();
         boolean shouldDraw = mc.gameMode != null && mc.gameMode.canHurtPlayer() && mc.getCameraEntity() instanceof Player;
-        Player player = (Player) mc.getCameraEntity();
+        Player player = mc.player;
         if (player == null) return;
         boolean hideGui = mc.options.hideGui;
         // 👇 minecraft's code, I don't know exactly what it does- only that it is used to calculate the position of the armor bar based on the player's health.

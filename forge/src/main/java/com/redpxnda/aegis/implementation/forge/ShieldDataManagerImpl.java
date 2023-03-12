@@ -45,6 +45,10 @@ public class ShieldDataManagerImpl {
         player.getCapability(EntityShieldProvider.ENTITY_SHIELD).ifPresent(EntityShield::resetLastHurt);
     }
 
+    public static void maximizeLastHurtTime(LivingEntity player) {
+        player.getCapability(EntityShieldProvider.ENTITY_SHIELD).ifPresent(EntityShield::maximizeLastHurt);
+    }
+
     public static void increaseLastHurtTime(LivingEntity player) {
         player.getCapability(EntityShieldProvider.ENTITY_SHIELD).ifPresent(EntityShield::increaseLastHurt);
     }
@@ -57,5 +61,15 @@ public class ShieldDataManagerImpl {
 
     public static void setShieldHitPos(LivingEntity player, Vec3 vec) {
         player.getCapability(EntityShieldProvider.ENTITY_SHIELD).ifPresent((shield) -> shield.setHitPos(vec));
+    }
+
+    public static void setBlockShield(LivingEntity player, double amount) {
+        player.getCapability(EntityShieldProvider.ENTITY_SHIELD).ifPresent((shield) -> shield.setBlockShield(amount));
+    }
+
+    public static double getBlockShield(LivingEntity player) {
+        if (player.getCapability(EntityShieldProvider.ENTITY_SHIELD).isPresent())
+            return player.getCapability(EntityShieldProvider.ENTITY_SHIELD).orElseGet(EntityShield::createFake).getBlockShield();
+        return -1;
     }
 }

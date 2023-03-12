@@ -43,6 +43,11 @@ public class ShieldDataManagerImpl {
         ShieldData.resetLastHurtTime(playerData);
     }
 
+    public static void maximizeLastHurtTime(LivingEntity player) {
+        IEntityDataSaver playerData = (IEntityDataSaver) player;
+        ShieldData.maximizeLastHurtTime(playerData);
+    }
+
     public static void increaseLastHurtTime(LivingEntity player) {
         IEntityDataSaver playerData = (IEntityDataSaver) player;
         ShieldData.increaseLastHurtTime(playerData);
@@ -56,5 +61,15 @@ public class ShieldDataManagerImpl {
     public static void setShieldHitPos(LivingEntity player, Vec3 vec) {
         IEntityDataSaver playerData = (IEntityDataSaver) player;
         ShieldData.setHitPos(playerData, vec);
+    }
+
+    public static void setBlockShield(LivingEntity player, double amount) {
+        IEntityDataSaver playerData = (IEntityDataSaver) player;
+        ShieldData.setBlockShield(playerData, amount);
+    }
+
+    public static double getBlockShield(LivingEntity player) {
+        IEntityDataSaver playerData = (IEntityDataSaver) player;
+        return ShieldData.getBlockShield(playerData);
     }
 }

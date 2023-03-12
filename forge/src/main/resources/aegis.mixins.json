@@ -5,6 +5,7 @@
   "client": [
   ],
   "mixins": [
+    "EquipmentSlotExtender"
   ],
   "injectors": {
     "defaultRequire": 1

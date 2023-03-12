@@ -2,8 +2,11 @@ package com.redpxnda.aegis.forge;
 
 import com.redpxnda.aegis.Aegis;
 import com.redpxnda.aegis.client.DefenseShieldOverlay;
+import com.redpxnda.aegis.client.ShieldIcons;
+import com.redpxnda.aegis.forge.client.ForgeBlockingShieldOverlay;
 import com.redpxnda.aegis.forge.client.ForgeDefenseShieldOverlay;
 import com.redpxnda.aegis.forge.client.ForgeProtectionBarOverlay;
+import com.redpxnda.aegis.forge.mixin.EquipmentSlotExtender;
 import com.redpxnda.aegis.forge.shield.EntityShield;
 import com.redpxnda.aegis.forge.shield.EntityShieldProvider;
 import com.redpxnda.aegis.registry.particle.ImpactParticle;
@@ -13,6 +16,7 @@ import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
@@ -30,6 +34,8 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+
+import java.util.Arrays;
 
 import static com.redpxnda.aegis.Aegis.MOD_ID;
 
@@ -96,13 +102,19 @@ public class AegisForge {
             public static void registerGuiOverlays(RegisterGuiOverlaysEvent event) {
                 event.registerAbove(new ResourceLocation("minecraft", "player_health"), "protection", ForgeProtectionBarOverlay.HUD_PROTECTION);
                 event.registerBelowAll("defense_shield", ForgeDefenseShieldOverlay.HUD_SHIELD);
+                event.registerAbove(new ResourceLocation("minecraft", "crosshair"), "blocking_shield", ForgeBlockingShieldOverlay.HUD_SHIELD);
             }
 
             @SubscribeEvent
             public static void onTextureStitch(TextureStitchEvent.Pre event) {
                 if (!event.getAtlas().location().equals(TextureAtlas.LOCATION_BLOCKS)) return;
-                event.addSprite(DefenseShieldOverlay.SHIELD_ICON_SPRITE);
-                event.addSprite(DefenseShieldOverlay.EMPTY_SHIELD_ICON_SPRITE);
+                for (ShieldIcons value : ShieldIcons.values()) {
+                    event.addSprite(value.getLocation(true));
+                    event.addSprite(value.getEmptyLocation(true));
+                    event.addSprite(value.getHitLocation(true));
+                    event.addSprite(value.getBreakLocationLeft(true));
+                    event.addSprite(value.getBreakLocationRight(true));
+                }
             }
         }
         @Mod.EventBusSubscriber(modid = MOD_ID, value = Dist.CLIENT)

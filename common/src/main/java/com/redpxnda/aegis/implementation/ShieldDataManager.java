@@ -8,7 +8,7 @@ import net.minecraft.world.phys.Vec3;
 public class ShieldDataManager {
     @ExpectPlatform
     public static double getShield(LivingEntity player) {
-        return -1;
+        return 0;
     }
 
     @ExpectPlatform
@@ -37,6 +37,11 @@ public class ShieldDataManager {
     }
 
     @ExpectPlatform
+    public static void maximizeLastHurtTime(LivingEntity player) {
+
+    }
+
+    @ExpectPlatform
     public static void increaseLastHurtTime(LivingEntity player) {
 
     }
@@ -48,6 +53,16 @@ public class ShieldDataManager {
 
     @ExpectPlatform
     public static void setShieldHitPos(LivingEntity player, Vec3 vec) {
+
+    }
+
+    @ExpectPlatform
+    public static double getBlockShield(LivingEntity player) {
+        return -1;
+    }
+
+    @ExpectPlatform
+    public static void setBlockShield(LivingEntity player, double amount) {
 
     }
 }

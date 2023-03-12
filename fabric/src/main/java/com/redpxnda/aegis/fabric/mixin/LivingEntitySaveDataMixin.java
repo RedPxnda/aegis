@@ -1,6 +1,7 @@
 package com.redpxnda.aegis.fabric.mixin;
 
 import com.redpxnda.aegis.fabric.shield.IEntityDataSaver;
+import com.redpxnda.aegis.fabric.shield.ShieldData;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.LivingEntity;
 import org.spongepowered.asm.mixin.Mixin;
@@ -14,7 +15,10 @@ public abstract class LivingEntitySaveDataMixin implements IEntityDataSaver {
 
     @Override
     public CompoundTag getPersistentData() {
-        if (this.persistentData == null) this.persistentData = new CompoundTag();
+        if (this.persistentData == null) {
+            this.persistentData = new CompoundTag();
+            ShieldData.maximizeLastHurtTime(this);
+        }
 
         return persistentData;
     }

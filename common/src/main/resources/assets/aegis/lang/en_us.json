@@ -3,5 +3,7 @@
   "attribute.aegis.frontal_protection": "Frontal Protection",
   "attribute.aegis.rearwards_protection": "Rearwards Protection",
   "attribute.aegis.sidewards_protection": "Sidewards Protection",
-  "attribute.aegis.defense": "Defense"
+  "attribute.aegis.defense": "Defense",
+
+  "item.modifiers.shield": "When Blocking:"
 }

@@ -6,13 +6,17 @@ import net.minecraft.world.phys.Vec3;
 public class ShieldData {
     public static void setHitPos(IEntityDataSaver entity, Vec3 vec) {
         CompoundTag tag = entity.getPersistentData();
-        tag.putLongArray("ShieldHitPos", new long[] {(long) vec.x, (long) vec.y, (long) vec.z});
+        tag.putDouble("ShieldHitPosX", vec.x);
+        tag.putDouble("ShieldHitPosY", vec.y);
+        tag.putDouble("ShieldHitPosZ", vec.z);
     }
 
     public static Vec3 getHitPos(IEntityDataSaver entity) {
         CompoundTag tag = entity.getPersistentData();
-        long[] longs = tag.getLongArray("ShieldHitPos");
-        return new Vec3(longs[0], longs[1], longs[2]);
+        double x = tag.getDouble("ShieldHitPosX");
+        double y = tag.getDouble("ShieldHitPosY");
+        double z = tag.getDouble("ShieldHitPosZ");
+        return new Vec3(x, y, z);
     }
 
     public static int increaseLastHurtTime(IEntityDataSaver entity) {
@@ -29,6 +33,11 @@ public class ShieldData {
     public static void resetLastHurtTime(IEntityDataSaver entity) {
         CompoundTag tag = entity.getPersistentData();
         tag.putInt("LastHurt", 0);
+    }
+
+    public static void maximizeLastHurtTime(IEntityDataSaver entity) {
+        CompoundTag tag = entity.getPersistentData();
+        tag.putInt("LastHurt", 100);
     }
 
     public static int getHurtTime(IEntityDataSaver entity) {
@@ -67,6 +76,17 @@ public class ShieldData {
     public static double getShield(IEntityDataSaver entity) {
         CompoundTag tag = entity.getPersistentData();
         return tag.getDouble("Shield");
+    }
+
+    public static double setBlockShield(IEntityDataSaver entity, double amount) {
+        CompoundTag tag = entity.getPersistentData();
+        tag.putDouble("BlockShield", amount);
+        return amount;
+    }
+
+    public static double getBlockShield(IEntityDataSaver entity) {
+        CompoundTag tag = entity.getPersistentData();
+        return tag.getDouble("BlockShield");
     }
 
 }

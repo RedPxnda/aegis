@@ -19,6 +19,7 @@ public class EntityShieldProvider implements ICapabilityProvider, INBTSerializab
 
     private EntityShield createEntityShield() {
         if (this.shield == null) this.shield = new EntityShield();
+        this.shield.maximizeLastHurt();
         return this.shield;
     }
 

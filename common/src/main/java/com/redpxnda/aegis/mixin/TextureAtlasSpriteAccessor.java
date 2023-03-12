@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.gen.Accessor;
 
 @Mixin(TextureAtlasSprite.class)
-public interface TextureAtlasSpriteMixin {
+public interface TextureAtlasSpriteAccessor {
     @Accessor
     NativeImage[] getMainImage();
 }

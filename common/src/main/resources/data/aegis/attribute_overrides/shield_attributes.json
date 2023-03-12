@@ -1,0 +1,12 @@
+{
+  "samples": "minecraft:shield",
+  "overrides": {
+    "aegis:frontal_protection": {
+      "slot": "shield",
+      "force": false,
+      "operation": "add",
+      "amount": 20,
+      "uuid": "2de38ee3-0450-45b8-9d58-da48e89b2d92"
+    }
+  }
+}

@@ -18,6 +18,9 @@
     ],
     "client": [
       "com.redpxnda.aegis.fabric.client.FabricClient"
+    ],
+    "mm:early_risers": [
+      "com.redpxnda.aegis.fabric.util.EnumModification"
     ]
   },
   "mixins": [

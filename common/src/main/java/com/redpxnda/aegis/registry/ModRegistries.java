@@ -6,8 +6,6 @@ import dev.architectury.registry.registries.Registries;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.Util;
 import net.minecraft.core.Registry;
-import net.minecraft.core.particles.ParticleType;
-import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.RangedAttribute;
@@ -19,6 +17,12 @@ import java.util.function.Supplier;
 import static com.redpxnda.aegis.Aegis.MOD_ID;
 
 public class ModRegistries {
+    /*static {
+        EquipmentSlot.values();
+    }
+
+    public static EquipmentSlot SHIELD_SLOT;*/
+
     public static final Supplier<Registries> REGISTRIES = Suppliers.memoize(() -> Registries.get(MOD_ID));
 
     public static Registrar<Attribute> attributes = REGISTRIES.get().get(Registry.ATTRIBUTE_REGISTRY);

@@ -2,7 +2,7 @@ package com.redpxnda.aegis.util;
 
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Matrix4f;
-import com.redpxnda.aegis.mixin.TextureAtlasSpriteMixin;
+import com.redpxnda.aegis.mixin.TextureAtlasSpriteAccessor;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.renderer.texture.OverlayTexture;
@@ -15,10 +15,8 @@ import java.util.Map;
 
 @Environment(EnvType.CLIENT)
 public class RenderUtils {
-    public static void addVertex(Matrix4f pPose, VertexConsumer pConsumer, float pRed, float pGreen, float pBlue, float pAlpha, float pX, float pY, float pZ, float pU, float pV, int light, boolean white) {
-        int overlay = OverlayTexture.NO_OVERLAY;
-        if (white) overlay = OverlayTexture.WHITE_OVERLAY_V;
-        pConsumer.vertex(pPose, pX, pY, pZ).color(pRed, pGreen, pBlue, pAlpha).uv(pU, pV).overlayCoords(overlay).uv2(light).normal(1, 0, 0).endVertex();
+    public static void addVertex(Matrix4f pPose, VertexConsumer pConsumer, float pRed, float pGreen, float pBlue, float pAlpha, float pX, float pY, float pZ, float pU, float pV, int light) {
+        pConsumer.vertex(pPose, pX, pY, pZ).color(pRed, pGreen, pBlue, pAlpha).uv(pU, pV).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(light).normal(1, 0, 0).endVertex();
     }
 
     public static Color mostCommon(ArrayList<Color> list) {
@@ -39,6 +37,6 @@ public class RenderUtils {
     }
 
     public static int getPixelRGBA(int x, int y, TextureAtlasSprite sprite) {
-        return ((TextureAtlasSpriteMixin) sprite).getMainImage()[0].getPixelRGBA(x, y); // using my TextureAtlasSprite accessor mixin, I can get the RGBA of a pixel
+        return ((TextureAtlasSpriteAccessor) sprite).getMainImage()[0].getPixelRGBA(x, y); // using my TextureAtlasSprite accessor mixin, I can get the RGBA of a pixel
     }
 }
